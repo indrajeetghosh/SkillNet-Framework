@@ -1,3 +1,4 @@
+#https://github.com/tuantle/regression-losses-pytorch
 import torch
 
 class LogCoshLoss(torch.nn.Module):
