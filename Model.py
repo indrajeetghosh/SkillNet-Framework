@@ -20,10 +20,11 @@ class MultiTask(nn.Module):
         self.convs(x)
     
         self.fc = nn.Linear(self._to_linear, 32)
-        self.fc1 = nn.Linear(32,1)
-        self.fc2 = nn.Linear(32,1)
-        self.fc3 = nn.Linear(32,1)
-        self.fc4 = nn.Linear(32,1)
+        self.fc_1 = nn.Linear(32, 16)
+        self.fc1 = nn.Linear(16,1)
+        self.fc2 = nn.Linear(16,1)
+        self.fc3 = nn.Linear(16,1)
+        self.fc4 = nn.Linear(16,1)
     
     
     def convs(self, x):
@@ -46,6 +47,7 @@ class MultiTask(nn.Module):
         
         x = x.view(-1, self._to_linear)
         x = F.tanh(self.fc(x))
+        x = F.tanh(self.fc_1(x))
         
         F1 = F.sigmoid(self.fc1(x))
         F2 = F.sigmoid(self.fc2(x))
